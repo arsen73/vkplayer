@@ -38,6 +38,8 @@ class PlayerVK(threading.Thread):
         #выбираем две записи
         self.con = sqlite.connect('users.db')
         cur = self.con.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS track (id INTEGER PRIMARY KEY, performer VARCHAR(100), title VARCHAR(100), url VARCHAR(512))')
+        self.con.commit()
         if id > 0:
             cur.execute('SELECT * FROM track WHERE id > '+str(id))
         else:
@@ -104,6 +106,8 @@ class PlayerVK(threading.Thread):
         #выбираем записи
         self.con = sqlite.connect('users.db')
         cur = self.con.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS track (id INTEGER PRIMARY KEY, performer VARCHAR(100), title VARCHAR(100), url VARCHAR(512))')
+        self.con.commit()
         cur.execute('SELECT * FROM track')
         res = cur.fetchall()
         self.con.close()

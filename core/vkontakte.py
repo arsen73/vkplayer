@@ -67,3 +67,14 @@ class Vkontakte:
 		response = urllib2.urlopen(req)
 
 		return response.read()
+
+	def testAuth(self):
+		return True if len(self.__remixsid(self.__ip_h())) > 5 else False
+
+
+
+if __name__ == '__main__':	
+	login = raw_input('Login:')
+	passw = raw_input('Password:')
+	p = Vkontakte(login, passw)
+	print p.testAuth()

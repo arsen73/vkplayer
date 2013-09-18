@@ -4,6 +4,7 @@ import sys, threading
 from PyQt4 import QtGui, QtCore
 from core.player import PlayerVK 
 from core.parser import ParserVks
+from core.parser import VkExeption
 
 class MainWindow(QtGui.QWidget, threading.Thread):
 	def __init__(self, parent=None):
@@ -93,7 +94,7 @@ class MainWindow(QtGui.QWidget, threading.Thread):
 
 
 	def showDialogSearch(self):
-		text, ok = QtGui.QInputDialog.getText(self, 'Searc', 'Enter text:')
+		text, ok = QtGui.QInputDialog.getText(self, 'Search', 'Enter text:')
 		if ok:
 			self.label.setText(unicode(text))
 			self.Search(unicode(text))
@@ -144,8 +145,11 @@ class MainWindow(QtGui.QWidget, threading.Thread):
 
 	def Search(self, sw):
 		print "Search"
-		
-		self.parser.SavePlayList(sw)
+		try:
+			self.parser.SavePlayList(sw)
+		except VkExeption as e:
+			self.label.setText(unicode(e))
+			return
 		self.getPlayList()
 		self.playStart()
 
