@@ -5,8 +5,8 @@ from core.player import PlayerVK
 
 from core.parser import ParserVks
 
-	login = raw_input('Login:')
-	passw = raw_input('Password:')
+login = raw_input('Login:')
+passw = raw_input('Password:')
 
 def get_param(prompt_string):
      screen.clear()
