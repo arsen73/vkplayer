@@ -56,7 +56,7 @@ class Vkmessag(Vkontakte):
 
 if __name__ == '__main__':
 	print "test Vkmessag"
-	ob = Vkmessag('+380684757116', 'niko2012')
+	ob = Vkmessag('login', 'pass')
 	ob.getListDialog()
 	idm = raw_input('Id: ')
 	ob.getListMessag(idm)
