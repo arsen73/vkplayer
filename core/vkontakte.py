@@ -14,9 +14,9 @@ class Vkontakte:
 		headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0'}
 		req = urllib2.Request('http://vk.com/', None, headers)
 		response = urllib2.urlopen(req)
-		ip_h = re.findall(r'value="[a-z 0-9]{18}"', response.read())[0]
+		self.ip_h = re.findall(r'value="[a-z 0-9]{18}"', response.read())[0]
 
-		return ip_h
+		return self.ip_h
 
 	def __remixsid(self, ip_h):
 		headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0'}
